@@ -1,0 +1,187 @@
+:root {
+  /* Tempus Brand Colors & Light Airy Theme */
+  --text: #4a4a4a;
+  --text-h: #1a1c21;
+  --bg: #ffffff;
+  --border: rgba(0, 0, 0, 0.05);
+  --code-bg: #f4f6f8;
+  
+  /* Tempus Blue */
+  --accent: #2663F6; 
+  --accent-bg: rgba(38, 99, 246, 0.08);
+  --accent-border: rgba(38, 99, 246, 0.3);
+  
+  /* Ultra-soft, diffuse shadows */
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.03), 0 4px 10px rgba(0, 0, 0, 0.02);
+
+  /* Clean, modern sans-serif stack mimicking the screenshot */
+  --sans: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --heading: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+
+  font: 16px/1.5 var(--sans);
+  letter-spacing: 0.2px;
+  
+  /* Forcing light mode slightly to ensure the airy gradient look stays intact */
+  color-scheme: light; 
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Soft dark mode fallback (just in case) using Tempus blue-grays */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #a0aab5;
+    --text-h: #ffffff;
+    --bg: #0f1115;
+    --border: rgba(255, 255, 255, 0.08);
+    --code-bg: #1a1c21;
+    --accent: #4a80f8;
+    --accent-bg: rgba(74, 128, 248, 0.15);
+    --accent-border: rgba(74, 128, 248, 0.4);
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+}
+
+#root {
+  /* Removed the fixed width & text-align: center so your App.jsx flexbox works */
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: left; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading);
+  color: var(--text-h);
+  margin: 0 0 1rem 0;
+}
+
+h1 {
+  /* Thin, elegant primary headers like the Tempus landing page */
+  font-size: 48px;
+  font-weight: 300; 
+  letter-spacing: -1px;
+  @media (max-width: 1024px) {
+    font-size: 32px;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+p {
+  margin: 0 0 1rem 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 6px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 14px;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.app-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 320px;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.main-panel {
+  flex: 1;
+  padding: 4rem;
+  overflow-y: auto;
+}
+
+.provider-name { font-size: 2.5rem; }
+.hospital-name { font-size: 1.2rem; }
+.placeholder-text { font-size: 1.5rem; }
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 35vh; 
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem !important;
+  }
+
+  .main-panel {
+    height: 65vh;
+    padding: 1.5rem !important;
+  }
+
+  .provider-name {
+    font-size: 1.8rem !important;
+  }
+  
+  .hospital-name {
+    font-size: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .specialty {
+    font-size: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .placeholder-text {
+    font-size: 1.2rem !important;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .output-card {
+    padding: 1rem 1.25rem !important;
+  }
+}
